@@ -23,6 +23,9 @@
     "@unocss/preset-wind": "^0.65.1",
     "@vueuse/core": "^12.0.0",
     "@vueuse/nuxt": "^12.0.0",
-    "unocss": "^0.65.1"
+    "unocss": "^0.65.1",
+    "@antfu/eslint-config": "^3.12.0",
+    "eslint": "^9.16.0",
+    "@unocss/eslint-plugin": "^0.65.1"
   }
 }
