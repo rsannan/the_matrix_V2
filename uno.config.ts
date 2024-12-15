@@ -10,4 +10,8 @@ export default defineConfig({
       roboto: 'Roboto',
     } }),
   ],
+  shortcuts: [
+    ['bg-primary', 'bg-[#2dd4bf]'],
+    ['container', 'mx-auto'],
+  ],
 })

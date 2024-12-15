@@ -3,7 +3,8 @@
 </script>
 
 <template>
-  <div class="font-roboto">
+  <div class="h-vh flex font-roboto md:container">
+    <layout-sidebar />
     <slot />
   </div>
 </template>

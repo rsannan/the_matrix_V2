@@ -7,6 +7,5 @@
     <h1>
       Test
     </h1>
-    <div class="i-ph-airplane-takeoff" />
   </div>
 </template>
