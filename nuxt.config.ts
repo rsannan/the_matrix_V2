@@ -27,4 +27,8 @@ export default defineNuxtConfig({
     port: 3737,
   },
   css: ['~/assets/styles.css'],
+  runtimeConfig: {
+    supabaseUrl: process.env.SUPABASE_URL,
+    supabaseKey: process.env.SUPABASE_KEY,
+  },
 })
