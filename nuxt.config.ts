@@ -19,11 +19,7 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   devtools: { enabled: true },
-  modules: [
-    '@vueuse/nuxt',
-    '@unocss/nuxt',
-    '@nuxt/image',
-  ],
+  modules: ['@vueuse/nuxt', '@unocss/nuxt', '@nuxt/image', '@nuxt/ui'],
   imports: {
     dirs: ['services', 'types'],
   },
