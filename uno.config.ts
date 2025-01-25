@@ -13,5 +13,6 @@ export default defineConfig({
   shortcuts: [
     ['bg-primary', 'bg-[#2dd4bf]'],
     ['container', 'mx-auto'],
+    ['flex-center', 'flex items-center justify-center'],
   ],
 })
