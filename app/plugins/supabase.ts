@@ -1,9 +1,12 @@
 import { createClient } from '@supabase/supabase-js'
 
-export default defineNitroPlugin((nitroApp) => {
-    nitroApp.hooks.hook('request', (event) => {
+export default defineNuxtPlugin((nuxtApp) => {
         const {supabaseKey, supabaseUrl} = useRuntimeConfig().public
         const supabase = createClient(supabaseUrl, supabaseKey)
-        event.context.supabase = supabase
-      });
+
+    return {
+        provide: {
+          supabase
+        }
+      }
 })
