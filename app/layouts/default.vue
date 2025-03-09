@@ -3,10 +3,10 @@ useAuthStatus()
 </script>
 
 <template>
-  <div class="h-vh flex font-roboto md:container">
+  <div class="relative h-vh flex font-roboto md:container">
     <!-- <layout-sidebar /> -->
     <layout-vertical-navigation />
-
+    <ui-alert />
     <slot />
   </div>
 </template>

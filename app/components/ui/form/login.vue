@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import * as v from 'valibot'
 
-const { user, setUser } = useSession()
 const schema = v.object({
   email: v.pipe(v.string(), v.email('Invalid email')),
   password: v.pipe(v.string(), v.minLength(6, 'Must be at least 6 characters')),
@@ -11,20 +10,18 @@ const state = reactive({
   email: '',
   password: '',
 })
-const { data, refresh, status } = await useFetch('/api/auth/login', {
-  method: 'POST',
-  body: state,
-  immediate: false,
-  watch: false,
-  key: 'user',
-})
 
-const pending = computed(() => status.value === 'pending')
-async function onSubmit(event) {
-  console.log('From submit function', event)
-  await refresh()
-  setUser(data.value.data)
-  console.log('User', user.value)
+const pending = ref(false)
+
+async function onSubmit() {
+  try {
+    pending.value = true
+    await signIn(state.email, state.password)
+    navigateTo('/')
+  }
+  finally {
+    pending.value = false
+  }
 }
 
 function handleResetPassword() {

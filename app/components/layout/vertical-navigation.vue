@@ -15,7 +15,7 @@ const links = [[{
   icon: 'i-heroicons-user',
   to: '/profile',
 }], [{
-  label: 'Settings',
+  label: 'Sign Out',
 }]]
 
 console.log('Colormode: ', colorMode)

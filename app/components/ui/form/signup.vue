@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import * as v from 'valibot'
 
-const emit = defineEmits(['changeForm'])
-
 const schema = v.object({
   email: v.pipe(v.string(), v.email('Invalid email')),
   password: v.pipe(v.string(), v.minLength(6, 'Must be at least 6 characters')),
@@ -16,21 +14,18 @@ const state = reactive({
   firstName: '',
   lastName: '',
 })
-const { refresh } = await useFetch('/api/auth/sign-up', {
-  method: 'POST',
-  body: state,
-  immediate: false,
-  watch: false,
-})
-async function onSubmit(event) {
-  // Do something with event.data\
-  console.log('From submit function', event)
-  await refresh()
-}
 
-function handleLogin() {
-  emit('changeForm')
-  console.log('Login')
+const pending = ref(false)
+
+async function onSubmit() {
+  try {
+    pending.value = true
+    await signUp(state)
+    navigateTo('/')
+  }
+  finally {
+    pending.value = false
+  }
 }
 </script>
 
@@ -57,6 +52,7 @@ function handleLogin() {
         label="Create An Account"
         size="sm"
         block
+        :loading="pending"
       />
     </div>
   </UForm>

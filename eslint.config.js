@@ -5,5 +5,6 @@ export default antfu({
   vue: true,
   rules: {
     'no-console': 'warn',
+    'no-undef': 'off',
   },
 })

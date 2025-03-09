@@ -1,14 +1,23 @@
-export const useSession = () => {
-  const user = ref(null)
-function setUser(newUser: any ) {
-  user.value = newUser
+export default function () {
+  const { $supabase:supabase } = useNuxtApp()
+
+const session = ref()
+const user = computed(()=> session?.value?.user)
+const isAuthenticated = computed(()=> !!session.value.session)
+getUserSession()
+
+
+async function getUserSession(){
+  if(!session.value){
+    const { data } = await supabase.auth.refreshSession()
+    session.value = data
+  }
 }
-function clearUser(){
-user.value = null
-}
+
   return {
     user,
-    setUser,
-    clearUser
+    session,
+    isAuthenticated,
+    getUserSession
   }
 }

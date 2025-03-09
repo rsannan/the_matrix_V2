@@ -12,19 +12,17 @@ const schema = v.object({
 const state = reactive({
   email: '',
 })
-const { refresh, status } = await useFetch('/api/auth/reset-password', {
-  method: 'POST',
-  body: state,
-  immediate: false,
-  watch: false,
-  key: 'forgot-password',
-})
 
-const pending = computed(() => status.value === 'pending')
+const pending = ref(false)
 
 async function onSubmit() {
-  console.log('onSubmit', state)
-  await refresh()
+  try {
+    pending.value = true
+    await resetPassword(state.email)
+  }
+  finally {
+    pending.value = false
+  }
 }
 </script>
 
